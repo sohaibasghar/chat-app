@@ -32,6 +32,7 @@ const App = () => {
     <div data-theme={theme}>
       <NavBar />
       <Routes>
+      <Route path='/settings' element={<SettingsPage />} />
         <Route path='/' element={<ProtectedLayout />}>
           <Route index element={<HomePage />} />
           <Route path='/settings' element={<SettingsPage />} />

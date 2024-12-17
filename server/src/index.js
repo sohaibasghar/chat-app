@@ -25,7 +25,7 @@ app.use(
   })
 );
 
-app.use("/",(req, res) => {
+app.use("/test",(req, res) => {
   res.json({message: "Welcome to chat app API", status: "success"});
 })
 app.use("/api/auth", authRoutes);
