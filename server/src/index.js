@@ -24,16 +24,15 @@ app.use(
     credentials: true,
   })
 );
+app.get("/_health", (req, res) => {
+  res.json({ message: "Hello World", status:"ok" });
+})
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-  });
+console.log("production");
 }
 
 server.listen(PORT, () => {
