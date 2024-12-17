@@ -20,11 +20,14 @@ app.use(express.json({limit: "30mb", extended: true}));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.SOCKET_URL || "*",
     credentials: true,
   })
 );
 
+app.use("/",(req, res) => {
+  res.json({message: "Welcome to chat app API", status: "success"});
+})
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
