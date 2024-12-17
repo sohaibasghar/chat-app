@@ -16,7 +16,7 @@ dotenv.config();
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
 
-app.use(express.json({limit: "30mb", extended: true}));
+app.use(express.json({ limit: "30mb", extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
@@ -25,18 +25,14 @@ app.use(
   })
 );
 
-app.use("/test",(req, res) => {
-  res.json({message: "Welcome to chat app API", status: "success"});
-})
+app.use("/test", (req, res) => {
+  res.json({ message: "Welcome to chat app API", status: "success" });
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-  });
+  console.log("production");
 }
 
 server.listen(PORT, () => {
