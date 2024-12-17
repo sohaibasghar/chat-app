@@ -11,14 +11,20 @@
     ],
     "routes": [
       {
-        "src": "/(.*)",
+        "src": "/api/auth/(.*)",
         "dest": "server/src/index.js"
-      }
-    ],
-    "rewrites": [
+      },
       {
-        "source": "/(.*)",
-        "destination": "/api"
+        "src": "/api/messages/(.*)",
+        "dest": "server/src/index.js"
+      },
+      {
+        "src": "/_health",
+        "dest": "server/src/index.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/api"
       }
     ]
   }
